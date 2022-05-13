@@ -29,6 +29,9 @@ class App extends Component {
     ]
   };
 
+  // player id counter
+  prevPlayerId = 4;
+
   handleScoreChange = (index, delta) => {
     this.setState( prevState => {
       const updatedPlayers = [ ...prevState.players ];
@@ -41,6 +44,23 @@ class App extends Component {
         players: updatedPlayers
       };
     });
+  }
+
+  handleAddPlayer = (name) => {
+    console.log(...this.state.players);
+    this.setState( prevState => {
+      return {  
+        players: [
+          ...prevState.players,
+          // merges existing players in og array to this new array w/o mutating the og array
+          {
+            name, // whenever the key/value match, they can be written once like this
+            score: 0,
+            id: this.prevPlayerId += 1
+          }
+        ]
+      }
+  });
   }
 
   handleRemovePlayer = (id) => {
@@ -71,7 +91,7 @@ class App extends Component {
             removePlayer={this.handleRemovePlayer}      
           />
         )}
-        <AddPlayerForm />
+        <AddPlayerForm addPlayer={this.handleAddPlayer} />
       </div>
     );
   }
