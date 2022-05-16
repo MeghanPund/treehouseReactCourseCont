@@ -1,5 +1,6 @@
 import React from 'react';
 import Stats from './Stats';
+import Stopwatch from './Stopwatch';
 
 const Header = (props) => {
     return (
