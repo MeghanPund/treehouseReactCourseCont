@@ -1,3 +1,4 @@
+// npm start/yarn build? to run locally
 import React, { Component } from "react";
 
 class Stopwatch extends Component {
@@ -13,15 +14,21 @@ class Stopwatch extends Component {
   }
 
   tick = () => {
-    console.log('ticking...')
+    if (this.state.isRunning) {
+      const now = Date.now()
+      this.setState( prevState => ({
+        previousTime: now,
+        elapsedTime: prevState.elapsedTime + (now - this.state.previousTime)
+      }));
+    }
   }
 
   handleStopwatch = () => {
-    this.setState({
-      isRunning: !this.state.isRunning
-    });
+    this.setState( prevState => ({
+      isRunning: !prevState.isRunning
+    }));
     if (!this.state.isRunning) {
-      console.log('starting...')
+      this.setState({ previousTime: Date.now() });
     }
   }
 
