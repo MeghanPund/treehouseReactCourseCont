@@ -11,7 +11,8 @@ class Player extends PureComponent {
     name: PropTypes.string.isRequired,
     score: PropTypes.number,
     id: PropTypes.number,
-    index: PropTypes.number
+    index: PropTypes.number,
+    isHighScore: PropTypes.bool
   };
   
   render () {
