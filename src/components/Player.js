@@ -21,7 +21,8 @@ class Player extends PureComponent {
       score,
       index,
       removePlayer,
-      changeScore
+      changeScore,
+      isHighScore
     } = this.props;
 
     return (
@@ -29,7 +30,7 @@ class Player extends PureComponent {
         <span className="player-name">
           <button className="remove-player" onClick={() => removePlayer(id)}>✖</button>
           
-          <Icon />
+          <Icon isHighScore={isHighScore} />
           { name }
         </span>
   
