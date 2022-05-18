@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 const Icon = (props) => {
   return (
@@ -9,5 +10,8 @@ const Icon = (props) => {
   )
 };
 
+Icon.propTypes = {
+  isHighScore: PropTypes.bool
+}
 
 export default Icon;
