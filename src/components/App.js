@@ -29,6 +29,16 @@ class App extends Component {
     ]
   };
 
+  getHighScore = (players) => {
+    const scores = this.state.players.map ( p => p.score );
+    const highScore = Math.max(...scores); // spread operator
+
+    if (highScore) {
+      return highScore
+    }
+    return null;
+  }
+
   // player id counter
   prevPlayerId = 4;
 
@@ -85,7 +95,8 @@ class App extends Component {
             key={player.id.toString()}
             index={index}
             changeScore={this.handleScoreChange}
-            removePlayer={this.handleRemovePlayer}      
+            removePlayer={this.handleRemovePlayer}
+            isHighScore={highScore === player.score} // is a player's score the same as the highest score  
           />
         )}
         <AddPlayerForm addPlayer={this.handleAddPlayer} />
